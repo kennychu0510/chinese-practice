@@ -6,20 +6,34 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
 import random
+from django.utils import timezone
 
 # Create your views here.
 
 
 def index(request):
-    words = list(Word.objects.all())
+    # select 10 words from database ordered by least number of correct attempts
+    words = list(Word.objects.order_by('numOfCorrect')[:10])
+    # shuffle the 10 words
     random.shuffle(words)
-    words = words[0:10]
+
+    # Random sort with weighting, same words may be selected
+    # allWords = list(Word.objects.all())
+    # weight_list = Word.objects.values('numOfAttempts')
+    # weighting = []
+    # for x in weight_list:
+    #     if x['numOfAttempts'] == 0:
+    #         weighting.append(1)
+    #     else:
+    #         weighting.append(1/(x['numOfAttempts']))
+    # # Pick 10 random words based on number of attempts (least attempted words get picked more likely)
+    # words = random.choices(allWords, weights=weighting, k=10)
     return render(request, "home.html", {
         "words": words
     })
 
 
-@csrf_exempt
+@ csrf_exempt
 def updateScore(request, word_id):
     if request.method == "PUT":
         feedback = json.loads(request.body)
@@ -32,8 +46,14 @@ def updateScore(request, word_id):
     return HttpResponse(status=204)
 
 
-def statistics(request):
-    words = Word.objects.all()
+def statistics(request, sort):
+    print(sort)
+    if sort == 'id':
+        words = Word.objects.all()
+    elif sort == 'correct':
+        words = Word.objects.order_by('-numOfCorrect')
+    elif sort == 'attempts':
+        words = Word.objects.order_by('-lastAttempt')
     return render(request, "statistics.html", {
         "words": words
     })

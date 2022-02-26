@@ -4,7 +4,8 @@ from .models import Word
 
 
 class WordAdmin(admin.ModelAdmin):
-    list_display = ("id", "right", "wrong", "numOfAttempts", "numOfCorrect")
+    list_display = ("id", "right", "wrong", "numOfAttempts",
+                    "numOfCorrect", "lastAttempt")
 
 
 admin.site.register(Word, WordAdmin)

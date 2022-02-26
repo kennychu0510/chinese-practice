@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("statistics", views.statistics),
+    path("statistics/<str:sort>", views.statistics, name="statistics"),
     path("reset", views.reset, name="reset"),
 
     # API Routes

@@ -18,12 +18,13 @@
             <table class = "table table-bordered table-fixed" style="color: black;">
                 <tbody>
                     <tr>
-                        <th>ID</th>
+                        <th><a href="{% url 'statistics' 'id' %}">ID</a></th>
                         <th class="table-success">正確</th>
                         <th class="table-danger">錯誤</th>
                         <th>Attempts</th>
-                        <th>Correct</th>
+                        <th><a href="{% url 'statistics' 'correct' %}">Correct</a> </th>
                         <th>%</th>
+                        <th class="last-attempt"><a href="{% url 'statistics' 'attempts' %}">Last Attempt</a></th>
                     </tr>
                     {% for word in words %}
                         <tr>
@@ -33,6 +34,7 @@
                             <td id="attempts">{{ word.numOfAttempts }} </td>
                             <td id="corrects">{{ word.numOfCorrect }} </td>
                             <td> <span id="percentage"></span>%</td>
+                            <td class="last-attempt">{{ word.lastAttempt }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

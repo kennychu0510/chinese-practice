@@ -14,7 +14,7 @@
         <hr>
         <div class="text-center mx-auto position-relative" id="display_width">
             <h3 class="float-left d-inline">Score: <span id="score">0</span>/{{ words|length }}</h3>
-            <button class="btn btn-primary float-right d-inline" id="refresh">New</button>
+            <a href="{% url 'statistics' 'id' %}" class="btn btn-primary float-right d-inline" id="statistics">Statistics</a>
             <table class = "table table-bordered" style="color: black;">
                 <tbody>
                     {% for word in words %}
@@ -26,7 +26,8 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <a href="/statistics" class="btn btn-primary" id="statistics">Statistics</a>
+            <button class="btn btn-primary" id="refresh">New</button>
+            
         </div>
         
 
