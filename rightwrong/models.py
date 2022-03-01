@@ -9,3 +9,4 @@ class Word(models.Model):
     numOfAttempts = models.IntegerField(default=0)
     numOfCorrect = models.IntegerField(default=0)
     lastAttempt = models.DateTimeField(auto_now=True)
+    description = models.TextField(blank=True)
