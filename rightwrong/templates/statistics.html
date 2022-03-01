@@ -28,13 +28,14 @@
                     </tr>
                     {% for word in words %}
                         <tr>
-                            <td>{{ word.id }} </td>
-                            <td>{{ word.right }}</td>
-                            <td>{{ word.wrong }}</td>
-                            <td id="attempts">{{ word.numOfAttempts }} </td>
-                            <td id="corrects">{{ word.numOfCorrect }} </td>
-                            <td> <span id="percentage"></span>%</td>
-                            <td class="last-attempt">{{ word.lastAttempt }}</td>
+                            <td class="align-middle">{{ word.id }} </td>
+                            <td class="align-middle">{{ word.right }}</td>
+                            
+                            <td class="align-middle">{{ word.wrong }}</td>
+                            <td class="align-middle" id="attempts">{{ word.numOfAttempts }} </td>
+                            <td class="align-middle" id="corrects">{{ word.numOfCorrect }} </td>
+                            <td class="align-middle"> <span id="percentage"></span>%</td>
+                            <td class="last-attempt align-middle">{{ word.lastAttempt }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

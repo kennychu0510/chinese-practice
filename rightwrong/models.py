@@ -10,3 +10,4 @@ class Word(models.Model):
     numOfCorrect = models.IntegerField(default=0)
     lastAttempt = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True)
+    pronunciation = models.FileField(upload_to='pronunciation/', null=True)
