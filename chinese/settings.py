@@ -30,7 +30,9 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     '192.168.3.25',
-    '127.0.0.1', 'chinese-practice.herokuapp.com/'
+    '127.0.0.1',
+    'chinese-practice.herokuapp.com/',
+    '.herokuapp.com'
 ]
 
 
