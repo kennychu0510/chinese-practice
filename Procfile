@@ -1,1 +1,1 @@
-web: gunicorn chinese-practice.wsgi --log-file -
+web: gunicorn chinese.wsgi --log-file -
