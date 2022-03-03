@@ -1,1 +1,0 @@
-web: gunicorn chinese-practice.wsgi --log-file -
