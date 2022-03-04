@@ -1,49 +1,51 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>錯別字</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'styles.css' %}">
-    </head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <body>
-        <h1 class="text-center">錯別字</h1>
-        <hr>
-        <div id="display_width" class="text-center mx-auto position-relative">
-            <h3 class="float-left d-inline">Total words: {{ words.count }}</h3>
-            <a href="/" class="btn btn-primary float-right" id="statistics">Homepage</a>
-            <table class = "table table-bordered table-fixed" style="color: black;">
-                <tbody>
-                    <tr>
-                        <th><a href="{% url 'statistics' 'id' %}">ID</a></th>
-                        <th class="table-success">正確</th>
-                        <th class="table-danger">錯誤</th>
-                        <th>Attempts</th>
-                        <th><a href="{% url 'statistics' 'correct' %}">Correct</a> </th>
-                        <th>%</th>
-                        <th class="last-attempt"><a href="{% url 'statistics' 'attempts' %}">Last Attempt</a></th>
-                    </tr>
-                    {% for word in words %}
-                        <tr>
-                            <td class="align-middle">{{ word.id }} </td>
-                            <td class="align-middle">{{ word.right }}</td>
-                            
-                            <td class="align-middle">{{ word.wrong }}</td>
-                            <td class="align-middle" id="attempts">{{ word.numOfAttempts }} </td>
-                            <td class="align-middle" id="corrects">{{ word.numOfCorrect }} </td>
-                            <td class="align-middle"> <span id="percentage"></span>%</td>
-                            <td class="last-attempt align-middle">{{ word.lastAttempt }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            
-            <a href="{% url 'reset' %}" class="btn btn-primary float-right" id="reset">Reset</a>
-        </div>
-        
-        <script src="{% static 'stat.js' %}"></script>
-    </body>
+
+<head>
+    <title>錯別字</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+    <h1 class="text-center">錯別字</h1>
+    <hr>
+    <div id="display_width" class="text-center mx-auto position-relative">
+        <h3 class="float-left d-inline">Total words: {{ words.count }}</h3>
+        <a href="/" class="btn btn-primary float-right" id="statistics">Homepage</a>
+        <table class="table table-bordered table-fixed" style="color: black;">
+            <tbody>
+                <tr>
+                    <th><a href="{% url 'statistics' 'id' %}">ID</a></th>
+                    <th class="table-success">正確</th>
+                    <th class="table-danger">錯誤</th>
+                    <th>Attempts</th>
+                    <th><a href="{% url 'statistics' 'correct' %}">Correct</a> </th>
+                    <th>%</th>
+                    <th class="last-attempt"><a href="{% url 'statistics' 'attempts' %}">Last Attempt</a></th>
+                </tr>
+                {% for word in words %}
+                <tr>
+                    <td class="align-middle">{{ word.id }} </td>
+                    <td class="align-middle">{{ word.right }}</td>
+
+                    <td class="align-middle">{{ word.wrong }}</td>
+                    <td class="align-middle" id="attempts">{{ word.numOfAttempts }} </td>
+                    <td class="align-middle" id="corrects">{{ word.numOfCorrect }} </td>
+                    <td class="align-middle"> <span id="percentage"></span>%</td>
+                    <td class="last-attempt align-middle">{{ word.lastAttempt }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'reset' %}" class="btn btn-primary float-right" id="reset" style="display: none;">Reset</a>
+    </div>
+
+    <script src="{% static 'stat.js' %}"></script>
+</body>
+
 </html>
